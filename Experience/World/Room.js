@@ -5,13 +5,32 @@ import Experience from '../Experience'
 export default class Room {
     constructor() {
         this.experience = new Experience()
+        this.sizes = this.experience.sizes
+        this.time = this.experience.time;
         this.scene = this.experience.scene
+        this.canvas = this.experience.canvas
+        this.camera = this.experience.camera
+        this.resources = this.experience.resources
 
-        const geometry = new THREE.BoxGeometry(1, 1, 1)
-        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
-        
-        const cube = new THREE.Mesh(geometry, material)
+        this.room = this.resources.items.room
+        this.actualRoom = this.room.scene
 
-        this.scene.add(cube)
+        this.setModel()
+    }
+
+    setModel() {
+     
+        this.actualRoom.scale.set(0.5, 0.5, 0.5)
+        this.actualRoom.children[0].scale.set(0,0,0)
+        this.scene.add(this.actualRoom)
+
+    }
+
+    resize() {
+     
+    }
+
+    update() {
+       // this.mixer.update(this.time.delta * 0.0009);
     }
 }

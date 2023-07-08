@@ -10,7 +10,7 @@ export default class Camera {
         this.canvas = this.experience.canvas;
 
         this.createOrthographicCamera();
-        this.setOrbitControls();
+       // this.setOrbitControls();
     }
 
     createOrthographicCamera() {
@@ -23,8 +23,8 @@ export default class Camera {
             50
         );
 
-
-        this.orthographicCamera.position.z = 13;
+        this.orthographicCamera.position.y = 1.5
+        this.orthographicCamera.rotation.x = -0.3;
 
 
         this.scene.add(this.orthographicCamera);
@@ -52,6 +52,6 @@ export default class Camera {
     }
 
     update() {
-        this.controls.update();
+        //this.controls.update();
     }
 }

@@ -4,6 +4,10 @@ import Renderer from './Renderer'
 import Sizes from './Utils/Sizes'
 import Time from './Utils/Time'
 import World from './World/World'
+import Resources from './Utils/Resources'
+
+
+import assets from "../Experience/Utils/assets"
 
 let instance = null
 
@@ -23,7 +27,9 @@ export default class Experience {
         this.scene = new THREE.Scene()
         this.camera = new Camera()
         this.renderer = new Renderer()
+        this.resources = new Resources(assets)
         this.world = new World()
+
 
 
         // Resize event
@@ -46,6 +52,9 @@ export default class Experience {
     update() {
         this.camera.update()
         this.world.update()
-        this.renderer.update()   
+        this.renderer.update()
+        if (this.controls) {
+            this.controls.update();
+        }
     }
 }
