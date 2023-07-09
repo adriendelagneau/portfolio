@@ -15,22 +15,32 @@ export default class Room {
         this.room = this.resources.items.room
         this.actualRoom = this.room.scene
 
+        this.baked1 = this.resources.items.roomTexture
+
+        this.setTextures()
         this.setModel()
     }
 
-    setModel() {
-     
-        this.actualRoom.scale.set(0.5, 0.5, 0.5)
-        this.actualRoom.children[0].scale.set(0,0,0)
-        this.scene.add(this.actualRoom)
+    setTextures() {
+        this.baked1.flipY = false
+        this.bakeMaterial = new THREE.MeshBasicMaterial({ map: this.baked1 })
 
+        this.actualRoom.traverse((child) => {
+            child.material = this.bakeMaterial
+        })
+
+    }
+
+    setModel() {
+        this.actualRoom.scale.set(0.5, 0.5, 0.5)
+        this.scene.add(this.actualRoom)
     }
 
     resize() {
-     
+
     }
 
     update() {
-       // this.mixer.update(this.time.delta * 0.0009);
+        // this.mixer.update(this.time.delta * 0.0009);
     }
 }

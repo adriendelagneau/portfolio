@@ -2,6 +2,11 @@ export default [
     {
         name: "room",
         type: 'glbModel',
-        path: '/cube.glb'
+        path: '../../public/riri.glb'
+    },
+    {
+        name: "roomTexture",
+        type: 'texture',
+        path: '../../public/room1.jpg'
     },
 ]
